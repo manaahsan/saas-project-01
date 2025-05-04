@@ -1,3 +1,7 @@
+"use client";
+import CheckIcon from "@/assets/check.svg";
+import { twMerge } from "tailwind-merge";
+import { motion } from "framer-motion";
 const pricingTiers = [
   {
     title: "Free",
@@ -51,5 +55,93 @@ const pricingTiers = [
 ];
 
 export const Pricing = () => {
-  return null;
+  return (
+    <section className="bg-white py-24">
+      <div className="container">
+        <div className="section-heading">
+          <h2 className="section-title">Pricing</h2>
+          <p className="section-description mt-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni
+            minus sunt modi nihil quis, impedit doloribus facilis et
+            exercitationem aliquid eligendi a repellendus aliquam voluptatum
+            architecto provident corrupti pariatur aut!
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-6 items-center mt-10 lg:flex-row lg:items-end lg:justify-center">
+          {pricingTiers.map(
+            (
+              { title, monthlyPrice, buttonText, popular, inverse, features },
+              index
+            ) => (
+              <div
+                key={index}
+                className={twMerge(
+                  "card",
+                  inverse && "border-black bg-black text-white/60"
+                )}
+              >
+                <div className="flex justify-between">
+                  <h3
+                    className={twMerge(
+                      "text-lg font-bold text-black/50",
+                      inverse && "text-white/60"
+                    )}
+                  >
+                    {title}
+                  </h3>
+                  {popular && (
+                    <div className="inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20">
+                      <motion.span
+                        animate={{
+                          backgroundPositionX: "100%",
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          ease: "linear",
+                          repeatType: "loop",
+                          duration:1
+                        }}
+                        className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF,#BBCB92,#71C2EF,#3BFFFF)] [background-size:200%] text-transparent bg-clip-text font-medium"
+                      >
+                        Popular
+                      </motion.span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex items-baseline gap-1 mt-[30px]">
+                  <span className="text-4xl font-bold tracking-tighter leading-none">
+                    ${monthlyPrice}
+                  </span>
+                  <span className="tarcking-tight font-bold text-black/50">
+                    /month
+                  </span>
+                </div>
+                <button
+                  className={twMerge(
+                    "btn btn-primary w-full mt-[30px]",
+                    inverse && "bg-white text-black"
+                  )}
+                >
+                  {buttonText}
+                </button>
+                <ul className="flex flex-col gap-5 mt-8">
+                  {features.map((feature) => (
+                    <li
+                      className="text-sm flex items-center gap-4"
+                      key={feature}
+                    >
+                      <CheckIcon className="h-6 w-6" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </section>
+  );
 };
