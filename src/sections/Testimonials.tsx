@@ -9,8 +9,8 @@ import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 import React from "react";
 
 const testimonials = [
@@ -69,7 +69,6 @@ const testimonials = [
     username: "@casey09",
   },
 ];
-
 const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);
 const thirdColumn = testimonials.slice(6, 9);
@@ -81,29 +80,29 @@ const TestimonialsColumn = (props: {
 }) => (
   <div className={props.className}>
     <motion.div
+      className={"flex flex-col gap-6 pb-6"}
       animate={{
         translateY: "-50%",
       }}
       transition={{
-        duration: props.duration || 10,
         repeat: Infinity,
         ease: "linear",
         repeatType: "loop",
+        duration: props.duration || 10,
       }}
-      className="flex flex-col gap-6 pb-6"
     >
       {[...new Array(2)].fill(0).map((_, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={`column-${index}`}>
           {props.testimonials.map(({ text, imageSrc, name, username }) => (
-            <div className="card">
-              <div>{text}</div>
-              <div className="flex items-center gap-2 mt-5">
+            <div className="card" key={`text-${name}-${username}`}>
+              <div className="">{text}</div>
+              <div className="flex flex-row items-center gap-2 mt-5">
                 <Image
                   src={imageSrc}
                   alt={name}
                   width={40}
                   height={40}
-                  className="h-10 w-10 rounded-full"
+                  className="h-0 w-10 rounded-full"
                 />
                 <div className="flex flex-col">
                   <div className="font-medium tracking-tight leading-5">
@@ -119,7 +118,6 @@ const TestimonialsColumn = (props: {
     </motion.div>
   </div>
 );
-
 export const Testimonials = () => {
   return (
     <section className="bg-white">
