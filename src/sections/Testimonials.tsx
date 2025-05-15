@@ -92,9 +92,9 @@ const TestimonialsColumn = (props: {
       }}
     >
       {[...new Array(2)].fill(0).map((_, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={`column-${index}`}>
           {props.testimonials.map(({ text, imageSrc, name, username }) => (
-            <div className="card" key={text}>
+            <div className="card" key={`text-${name}-${username}`}>
               <div className="">{text}</div>
               <div className="flex flex-row items-center gap-2 mt-5">
                 <Image
@@ -135,10 +135,7 @@ export const Testimonials = () => {
           </p>
         </div>
         <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[738px] overflow-hidden">
-          <TestimonialsColumn 
-          testimonials={firstColumn}
-          duration={15}
-           />
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn
             testimonials={secondColumn}
             className="hidden md:block"

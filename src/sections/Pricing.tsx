@@ -75,7 +75,7 @@ export const Pricing = () => {
               index
             ) => (
               <div
-                key={index}
+                key={`pricing-tier-${index}`}
                 className={twMerge(
                   "card",
                   inverse && "border-black bg-black text-white/60"
@@ -100,7 +100,7 @@ export const Pricing = () => {
                           repeat: Infinity,
                           ease: "linear",
                           repeatType: "loop",
-                          duration:1
+                          duration: 1,
                         }}
                         className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF,#BBCB92,#71C2EF,#3BFFFF)] [background-size:200%] text-transparent bg-clip-text font-medium"
                       >
@@ -127,10 +127,10 @@ export const Pricing = () => {
                   {buttonText}
                 </button>
                 <ul className="flex flex-col gap-5 mt-8">
-                  {features.map((feature) => (
+                  {features.map((feature, index) => (
                     <li
                       className="text-sm flex items-center gap-4"
-                      key={feature}
+                      key={`feature-${title}-${feature}`}
                     >
                       <CheckIcon className="h-6 w-6" />
                       <span>{feature}</span>
