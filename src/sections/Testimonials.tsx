@@ -8,10 +8,6 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
-import React from "react";
 
 const testimonials = [
   {
@@ -128,10 +124,8 @@ export const Testimonials = () => {
           </div>
           <h2 className="section-title mt-5">What our users say</h2>
           <p className="section-description mt-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit
-            minima nisi, quae voluptates saepe error explicabo esse pariatur
-            iste ducimus accusantium ullam veritatis molestiae excepturi rem
-            consequatur distinctio veniam eum?
+            From intuitive design to powerful features, our app has become an
+            essential tool for users around the world.
           </p>
         </div>
         <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[738px] overflow-hidden">
